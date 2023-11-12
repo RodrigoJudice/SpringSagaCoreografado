@@ -19,7 +19,7 @@ import static org.apache.kafka.clients.producer.ProducerConfig.*;
 public class KafkaProducerConfig {
 
   @Bean
-  public ProducerFactory<String, SaleMessage> producerFactory() {
+  ProducerFactory<String, SaleMessage> producerFactory() {
     Map<String, Object> configProps = new HashMap<>();
     configProps.put(BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
     configProps.put(GROUP_ID_CONFIG, "inventory");
@@ -29,7 +29,7 @@ public class KafkaProducerConfig {
   }
 
   @Bean
-  public KafkaTemplate<String, SaleMessage> kafkaTemplate() {
+  KafkaTemplate<String, SaleMessage> kafkaTemplate() {
     return new KafkaTemplate<>(producerFactory());
   }
 

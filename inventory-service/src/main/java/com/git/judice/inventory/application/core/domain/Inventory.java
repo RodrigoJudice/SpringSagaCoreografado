@@ -9,15 +9,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Inventory {
 
-    private Integer id;
-    private Integer productId;
-    private Integer quantity;
+  private Integer id;
+  private Integer productId;
+  private Integer quantity;
 
-    public void debitQuantity(Integer quantity) {
-        if (this.quantity < quantity) {
-            throw new RuntimeException("Insufficient inventory");
-        }
-        this.quantity -= quantity;
+  public void debitQuantity(Integer quantity) {
+    if (this.quantity < quantity) {
+      throw new RuntimeException("Insufficient inventory");
     }
+    this.quantity -= quantity;
+  }
+
+  public void creditQuantity(Integer quantity) {
+    this.quantity += quantity;
+  }
 
 }

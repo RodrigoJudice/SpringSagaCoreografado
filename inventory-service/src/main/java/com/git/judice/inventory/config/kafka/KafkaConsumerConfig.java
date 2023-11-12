@@ -20,7 +20,7 @@ import static org.apache.kafka.clients.consumer.ConsumerConfig.*;
 public class KafkaConsumerConfig {
 
   @Bean
-  public ConsumerFactory<String, SaleMessage> consumerFactory() {
+  ConsumerFactory<String, SaleMessage> consumerFactory() {
     Map<String, Object> props = new HashMap<>();
     props.put(BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
     props.put(KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
@@ -30,7 +30,7 @@ public class KafkaConsumerConfig {
   }
 
   @Bean
-  public ConcurrentKafkaListenerContainerFactory<String, SaleMessage> kafkaListenerContainerFactory() {
+  ConcurrentKafkaListenerContainerFactory<String, SaleMessage> kafkaListenerContainerFactory() {
     ConcurrentKafkaListenerContainerFactory<String, SaleMessage> factory = new ConcurrentKafkaListenerContainerFactory<>();
     factory.setConsumerFactory(consumerFactory());
     return factory;
