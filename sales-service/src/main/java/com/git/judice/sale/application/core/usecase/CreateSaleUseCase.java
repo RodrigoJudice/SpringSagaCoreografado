@@ -8,7 +8,9 @@ import com.git.judice.sale.application.ports.out.SaveSaleOutputPort;
 import com.git.judice.sale.application.ports.out.SendCreatedSaleOutputPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class CreateSaleUseCase implements CreateSaleInputPort {
@@ -18,8 +20,12 @@ public class CreateSaleUseCase implements CreateSaleInputPort {
 
     @Override
     public void create(Sale sale) {
-        sale.setStatus(SaleStatus.PENDING);
-        var saleSaved = saveSaleOutputPort.save(sale);
-        sendCreatedSaleOutputPort.send(saleSaved, SaleEvent.CREATED_SALE);
+        try {
+            sale.setStatus(SaleStatus.PENDING);
+            var saleSaved = saveSaleOutputPort.save(sale);
+            sendCreatedSaleOutputPort.send(saleSaved, SaleEvent.CREATED_SALE);
+        } catch (Exception e) {
+            log.error("Houve um erro = {}", e.getMessage());
+        }
     }
 }

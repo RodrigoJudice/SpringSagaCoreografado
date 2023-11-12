@@ -6,7 +6,6 @@ import com.git.judice.sale.application.core.domain.enums.SaleStatus;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
-import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
 public interface SaleEntityMapper {
