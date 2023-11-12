@@ -9,8 +9,8 @@ import com.git.judice.sale.application.ports.out.SendCreatedSaleOutputPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@RequiredArgsConstructor
 @Component
+@RequiredArgsConstructor
 public class CreateSaleUseCase implements CreateSaleInputPort {
 
     private final SaveSaleOutputPort saveSaleOutputPort;
