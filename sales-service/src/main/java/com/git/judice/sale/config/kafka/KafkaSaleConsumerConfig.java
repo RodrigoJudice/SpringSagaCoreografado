@@ -3,7 +3,6 @@ package com.git.judice.sale.config.kafka;
 import com.git.judice.sale.adapters.out.message.SaleMessage;
 
 import org.apache.kafka.common.serialization.StringDeserializer;
-//import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -24,11 +23,10 @@ public class KafkaSaleConsumerConfig {
     public ConsumerFactory<String, SaleMessage> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(GROUP_ID_CONFIG, "sale");
         props.put(KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        // props.put(VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         props.put(VALUE_DESERIALIZER_CLASS_CONFIG, CustomDeserializer.class);
         props.put(AUTO_OFFSET_RESET_CONFIG, "earliest");
-        // props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
         return new DefaultKafkaConsumerFactory<>(props);
     }
 
