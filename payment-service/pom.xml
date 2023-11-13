@@ -17,8 +17,6 @@
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.4</spring-cloud.version>
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
-		<com.fasterxml.jackson.core.version>2.15.3</com.fasterxml.jackson.core.version>
-		<org.projectlombok.version>1.18.30</org.projectlombok.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -52,7 +50,6 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>${com.fasterxml.jackson.core.version}</version>
 		</dependency>
 
 		<dependency>
@@ -76,8 +73,17 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-
+  <dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>
@@ -120,5 +126,7 @@
 			</plugin>
 		</plugins>
 	</build>
+
+
 
 </project>
