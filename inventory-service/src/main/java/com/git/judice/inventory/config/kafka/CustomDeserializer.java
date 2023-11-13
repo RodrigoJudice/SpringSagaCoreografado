@@ -1,8 +1,7 @@
 package com.git.judice.inventory.config.kafka;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.git.judice.inventory.adapters.out.message.SaleMessage;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.serialization.Deserializer;
 

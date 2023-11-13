@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
+//import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import com.git.judice.inventory.adapters.out.message.SaleMessage;
 
@@ -24,8 +25,10 @@ public class KafkaProducerConfig {
     configProps.put(BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
     configProps.put(GROUP_ID_CONFIG, "inventory");
     configProps.put(KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+    // configProps.put(VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
     configProps.put(VALUE_SERIALIZER_CLASS_CONFIG, CustomSerializer.class);
     return new DefaultKafkaProducerFactory<>(configProps);
+
   }
 
   @Bean
